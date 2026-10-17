@@ -1,6 +1,6 @@
 <h1>预告：手机端Agent即将上线，请尽请期待！</h1>
 <h1>捐赠赞助，支持一下吧！</h1>
-<image src="s">
+<image src="https://github.com/anonymous123456988/NeuraAgent-v3/blob/main/%E6%8D%90%E8%B5%A0.jpg">
 该版本增加了扩展功能，使AI可以直接调用扩展来完成指令，一下使扩展开发方法：
 # NeuraAgent PC 端扩展包开发 README
 
