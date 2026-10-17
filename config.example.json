@@ -1,0 +1,139 @@
+{
+  "_说明": "复制本文件为 config.json 后按需修改。模型模式互斥：use_builtin_model=true 用内置模型(本地大模型: Ollama 或 OpenAI 兼容端点如 LM Studio，Ollama 不可用时自动降级内置引擎 NeuraBrain)；use_builtin_model=false 则 use_deepseek_api=true 使用 DeepSeek API，并在 api.deepseek_api_key 填写你的 Key。两个开关不可同时为 true(启动时自动强制互斥)。",
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8765
+  },
+  "ai": {
+    "use_builtin_model": true,
+    "use_deepseek_api": false,
+    "builtin": {
+      "backend": "nlm",
+      "ollama_base_url": "http://127.0.0.1:11434",
+      "openai_base_url": "http://127.0.0.1:1234/v1",
+      "openai_api_key": "",
+      "model_name": "qwen2.5:7b",
+      "auto_fallback_to_engine": true,
+      "nlm_model_path": "system/nlm/model.npz",
+      "nlm_auto_train": true
+    },
+    "api": {
+      "deepseek_api_key": "",
+      "base_url": "https://api.deepseek.com",
+      "model": "deepseek-chat",
+      "disable_reasoning": true,
+      "max_tokens": 8192,
+      "temperature": 0.6,
+      "timeout": 120
+    }
+  },
+  "agent": {
+    "name": "NEURA",
+    "default_city": "宜昌",
+    "max_tool_rounds": 12,
+    "max_history_messages": 60,
+    "max_context_chars": 28000,
+    "code_max_fix_rounds": 3,
+    "dynamic_tools": {
+      "enabled": true,
+      "web_reference": true
+    },
+    "system_prompt": "你是 NEURA，一个内置了完整工具调用集(调用集)的智能体。\n\n【交互规则】\n1. 你在右侧对话框中只输出给用户的文本（结果摘要、解释、建议），不要输出冗长的 JSON 或原始数据。\n2. 所有具体的操作结果（文件列表、天气数据、代码过程、系统信息、网页内容等）必须通过调用集里的工具（panel_popup / panel_update）在左侧控制板中以弹窗展示。\n3. 需要调用工具时，直接返回工具调用；不要假装执行了某个操作却只输出文字。\n4. 一次尽量把任务拆成正确的工具调用序列，按顺序执行；失败时根据错误信息自动调整参数重试，必要时使用 web_search 联网查证。\n5. 用户提出合法要求时必须尝试完成：查文件、查天气、联网搜索、编写/调试代码并打包下载、系统信息等。若现有调用集没有对应能力，调用 synthesize_tool 让小AI 动态合成新的调用集。\n6. 不要在思考过程中泄露内部推理，直接给出结论或工具调用。\n\n【安全边界】\n- 命令执行受白名单与黑名单约束（见 config.json permissions），被拒绝时向用户说明原因。\n- 沙箱内运行的代码有超时/内存/输出上限。\n- 不执行破坏性、违法、危险操作；恶意/高危的调用集请求会被小AI 拦截。\n\n【自我改进】\n- 工具调用失败后系统会自动记录、学习规则并通过回归测试后应用，你无需刻意声明该过程。\n- 自定义调用集连续失败时小AI 会自动升级它。"
+  },
+  "permissions": {
+    "allowed_commands": [
+      "dir",
+      "ls",
+      "cat",
+      "type",
+      "echo",
+      "ipconfig",
+      "ifconfig",
+      "ping",
+      "systeminfo",
+      "uname",
+      "hostname",
+      "date",
+      "python",
+      "python3",
+      "node",
+      "git",
+      "pip",
+      "pip3",
+      "npm",
+      "pwd",
+      "whoami",
+      "df",
+      "du",
+      "ps",
+      "top",
+      "free"
+    ],
+    "denied_commands": [
+      "format",
+      "fdisk",
+      "mkfs",
+      "dd",
+      "shutdown",
+      "reboot",
+      "init",
+      "rm",
+      "del",
+      "mv",
+      "curl",
+      "wget",
+      "chmod",
+      "chown",
+      "kill",
+      "taskkill",
+      "sudo",
+      "su"
+    ],
+    "allow_paths": [
+      "*"
+    ],
+    "deny_paths": [
+      "/etc/shadow",
+      "/etc/passwd",
+      "/etc/sudoers",
+      "/proc/kcore",
+      "C:\\Windows\\System32\\config",
+      "/System/Library/Keychains"
+    ],
+    "code_execution": {
+      "enabled": true,
+      "firejail": false,
+      "memory_limit_mb": 512,
+      "timeout_seconds": 30,
+      "output_cap_chars": 60000,
+      "allowed_extensions": [
+        ".py",
+        ".js",
+        ".html",
+        ".json",
+        ".sh",
+        ".txt",
+        ".md",
+        ".css"
+      ]
+    }
+  },
+  "panel": {
+    "max_windows": 8,
+    "theme": {
+      "primary": "#00d4ff",
+      "accent": "#7aa2ff",
+      "glow": "rgba(0,212,255,0.40)",
+      "bg_opacity": 0.12
+    }
+  },
+  "network": {
+    "search_backends": [
+      "duckduckgo",
+      "bing"
+    ],
+    "weather_provider": "open-meteo",
+    "user_agent": "NeuraAgent/1.0 (personal assistant)",
+    "timeout_seconds": 20
+  }
+}
