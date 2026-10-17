@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "r_1",
+      "tool": "list_directory",
+      "match": "不存在",
+      "hint": {
+        "path_hint": "路径不存在时自动回退到父目录或家目录"
+      },
+      "reason": "list_directory 连续 2 次路径不存在",
+      "source": "failure_analysis",
+      "created_at": "2026-10-04T20:28:04+08:00",
+      "status": "active",
+      "activated_at": "2026-10-04T20:28:04+08:00",
+      "version": 1
+    }
+  ],
+  "memories": [],
+  "prompt_patches": [],
+  "history": [
+    {
+      "version": 1,
+      "applied_at": "2026-10-04T20:28:04+08:00",
+      "rules": [
+        "r_1"
+      ]
+    }
+  ],
+  "tests": {
+    "last_run": "2026-10-05T12:19:18+08:00",
+    "passed": true
+  }
+}

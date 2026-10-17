@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEURA · AI Agent 控制台</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b1220'/><path d='M8 22V10l16 12V10' stroke='%2300d4ff' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow g1"></div>
+<div class="bg-glow g2"></div>
+<div class="bg-hex" id="bgHex"></div>
+<div class="bg-stars" id="bgStars"></div>
+<div class="bg-scanline"></div>
+<div class="bg-vignette"></div>
+<div class="hud-corner tc"></div>
+<div class="hud-corner bc"></div>
+
+<!-- 顶部: 会话列表 -->
+<header id="topbar">
+  <div class="brand">
+    <div class="brand-logo">▣</div>
+    <div>
+      <div class="brand-name">NEURA <span class="brand-sub">AI AGENT</span></div>
+      <div class="brand-mode" id="modeLabel">连接中…</div>
+    </div>
+  </div>
+  <nav id="sessionBar" class="session-bar"></nav>
+  <div class="top-actions">
+    <button id="btnNewSession" class="btn ghost" title="新会话">＋ 新会话</button>
+    <div class="status-pill" id="statusPill"><span class="dot"></span><span id="statusText">idle</span></div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 左侧: 控制板 -->
+  <section id="panel" class="panel">
+    <div class="panel-head">
+      <span class="panel-title">▮ 控制板 CONTROL DECK</span>
+      <span class="panel-hint">AI 操作结果在此弹窗展示 · 窗口可拖动/关闭</span>
+    </div>
+    <div class="panel-tools">
+      <button id="btnCmdTerminal" class="ptool" title="打开实时命令终端窗口">⌘ 命令</button>
+      <button id="btnExtUpload" class="ptool" title="扩展管理: 上传/启用/禁用/卸载/查看，安装后 AI 即可按用途标题调用">⬒ 扩展</button>
+      <input type="file" id="extFileInput" accept=".zip" style="display:none">
+    </div>
+    <div id="panelCanvas" class="panel-canvas"></div>
+    <div id="panelDock" class="panel-dock"></div>
+  </section>
+
+  <!-- 右侧: 对话框 -->
+  <section id="chat" class="chat">
+    <div class="chat-head">
+      <span class="chat-title">◆ NEURA 对话</span>
+      <button id="btnCollapseChat" class="btn ghost mini" title="折叠为悬浮球">◐ 悬浮球</button>
+    </div>
+    <div id="chatLog" class="chat-log"></div>
+    <div id="chatInputBar" class="chat-input-bar">
+      <div class="suggest" id="suggestChips"></div>
+      <div class="input-row">
+        <textarea id="chatInput" rows="1" placeholder="给 NEURA 下达指令，例如：查看我的家目录 / 今天天气怎样 / 帮我写一个计算器程序并下载…"></textarea>
+        <button id="btnSend" class="btn send" title="发送">➤</button>
+      </div>
+      <div class="input-meta" id="inputMeta">Enter 发送 · Shift+Enter 换行 · Ctrl+C 停止当前任务</div>
+    </div>
+  </section>
+</main>
+
+<!-- 悬浮球(桌面端/网页端通用): 对话框折叠后的小圆球, 点击展开/缩回 -->
+<div id="neuraBall" class="neura-ball hidden" title="NEURA 对话框(点击展开/缩回)">
+  <span class="ball-core"></span>
+  <span class="ball-ring"></span>
+  <span class="ball-status" id="ballStatus"></span>
+</div>
+
+<div id="toastWrap" class="toast-wrap"></div>
+
+<script src="/static/js/ws.js"></script>
+<script src="/static/js/panel.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

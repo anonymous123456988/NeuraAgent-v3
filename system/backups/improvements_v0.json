@@ -1,0 +1,11 @@
+{
+  "version": 0,
+  "rules": [],
+  "memories": [],
+  "prompt_patches": [],
+  "history": [],
+  "tests": {
+    "last_run": "2026-10-04T20:28:04+08:00",
+    "passed": true
+  }
+}

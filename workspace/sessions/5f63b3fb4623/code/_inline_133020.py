@@ -1,0 +1,1 @@
+data = {'sum': 2+3, 'kind': 'direct'}

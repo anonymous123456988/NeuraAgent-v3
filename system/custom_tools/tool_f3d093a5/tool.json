@@ -1,0 +1,22 @@
+{
+  "name": "tool_f3d093a5",
+  "description": "通用参数整理调用集(动态生成)",
+  "parameters": {
+    "type": "object",
+    "properties": {},
+    "required": []
+  },
+  "version": 1,
+  "operation": "给QQ好友发消息",
+  "created_at": "2026-10-07T16:06:16+08:00",
+  "review": {
+    "passed": true,
+    "checks": [
+      "L1意图拦截",
+      "L2导入白名单",
+      "L3危险模式",
+      "L4破坏性操作",
+      "L5试运行"
+    ]
+  }
+}

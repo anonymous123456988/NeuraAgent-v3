@@ -1,0 +1,14 @@
+{
+  "name": "NEURA 手机助手",
+  "short_name": "NEURA",
+  "description": "语音唤醒的 AI 桌面智能体手机遥控端",
+  "start_url": "/mobile",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0f16",
+  "theme_color": "#161a22",
+  "icons": [
+    { "src": "/static/neura_icon_192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/static/neura_icon_512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

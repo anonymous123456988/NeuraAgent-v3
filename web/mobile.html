@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#161a22">
+<title>NEURA 手机版</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="neura_icon_192.png">
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<div id="bgGrid"></div>
+
+<!-- 顶部状态栏 -->
+<div id="statusBar">
+  <span id="statusDot" class="off"></span>
+  <span id="statusText">未连接 · 点击右上角设置服务器</span>
+  <button id="btnLink">⚙ 连接</button>
+</div>
+
+<!-- 对话框 -->
+<div id="dialogBackdrop"></div>
+<div id="dialogWrap">
+  <div id="dialog">
+    <div id="dialogHead">
+      <span class="traffic"><i></i><i></i><i></i></span>
+      <span id="dialogTitle">NEURA · 手机助手</span>
+      <button class="tbtn" id="btnExt">⬒ 扩展</button>
+      <button class="tbtn" id="btnModel">⚙ 模型</button>
+      <button class="tbtn" id="btnClose">✕</button>
+    </div>
+    <div id="msgList"></div>
+    <div id="inputBar">
+      <input id="chatInput" type="text" placeholder="输入指令…" autocomplete="off" enterkeyhint="send">
+      <button id="btnVoice" title="按住说话 / 语音输入">🎤</button>
+      <button id="btnSend">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- 后台执行状态条 -->
+<div id="bgBar"><span class="spin"></span><span id="bgBarText">NEURA 正在后台执行…</span></div>
+
+<!-- 底部唤醒 -->
+<div id="wakeArea">
+  <button id="wakeBtn" title="语音唤醒">●</button>
+  <span id="wakeHint">说 “嘿 Neura” 唤醒 · 点击外部关闭对话框</span>
+</div>
+
+<!-- 底部面板 -->
+<div id="sheet">
+  <div id="sheetGrab"></div>
+  <div id="sheetHead"><h3 id="sheetTitle">设置</h3><button class="tbtn" id="btnSheetClose">✕</button></div>
+  <div id="sheetBody"></div>
+</div>
+
+<!-- 密码/确认窗 -->
+<div id="authMask">
+  <div id="authCard">
+    <h4 id="authTitle">⚠ 高危操作确认</h4>
+    <div id="authDesc"></div>
+    <input id="authInput" type="password" placeholder="输入系统登录密码确认…">
+    <div id="authBtns">
+      <button id="btnAuthNo">取消</button>
+      <button id="btnAuthOk">确认执行</button>
+    </div>
+  </div>
+</div>
+
+<!-- 连接设置 -->
+<div id="linkMask">
+  <div id="linkCard">
+    <h4>连接 NEURA 服务</h4>
+    <div class="tip">手机版需要连接电脑上运行的 NEURA 服务。<br>
+    1) 电脑上运行 <b>run.py</b>；<br>
+    2) 手机与电脑在同一 WiFi；<br>
+    3) 在此填入电脑 IP 与端口，例如 <b>192.168.1.5:8765</b></div>
+    <input id="linkInput" type="text" placeholder="电脑IP:端口 (如 192.168.1.5:8765)">
+    <div id="linkBtns">
+      <button id="btnLinkNo">取消</button>
+      <button id="btnLinkOk">连接</button>
+    </div>
+  </div>
+</div>
+
+<div id="toastWrap"></div>
+
+<script src="mobile.js"></script>
+</body>
+</html>

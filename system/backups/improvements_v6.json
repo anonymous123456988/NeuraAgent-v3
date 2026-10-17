@@ -1,0 +1,139 @@
+{
+  "version": 6,
+  "rules": [
+    {
+      "id": "r_1",
+      "tool": "list_directory",
+      "match": "不存在",
+      "hint": {
+        "path_hint": "路径不存在时自动回退到父目录或家目录"
+      },
+      "reason": "list_directory 连续 2 次路径不存在",
+      "source": "failure_analysis",
+      "created_at": "2026-10-04T20:28:04+08:00",
+      "status": "active",
+      "activated_at": "2026-10-04T20:28:04+08:00",
+      "version": 1
+    },
+    {
+      "id": "r_2",
+      "tool": "web_search",
+      "match": "网络",
+      "hint": {
+        "retry_backoff": 2
+      },
+      "reason": "web_search 连续 2 次网络失败, 建议重试退避",
+      "source": "failure_analysis",
+      "created_at": "2026-10-05T12:19:18+08:00",
+      "status": "active",
+      "activated_at": "2026-10-05T12:19:18+08:00",
+      "version": 2
+    },
+    {
+      "id": "r_3",
+      "tool": "web_search",
+      "match": "网络",
+      "hint": {
+        "retry_backoff": 2
+      },
+      "reason": "web_search 连续 2 次网络失败, 建议重试退避",
+      "source": "failure_analysis",
+      "created_at": "2026-10-05T12:20:37+08:00",
+      "status": "active",
+      "activated_at": "2026-10-05T12:20:37+08:00",
+      "version": 3
+    },
+    {
+      "id": "r_4",
+      "tool": "web_search",
+      "match": "网络",
+      "hint": {
+        "retry_backoff": 2
+      },
+      "reason": "web_search 连续 2 次网络失败, 建议重试退避",
+      "source": "failure_analysis",
+      "created_at": "2026-10-05T14:26:42+08:00",
+      "status": "active",
+      "activated_at": "2026-10-05T14:26:43+08:00",
+      "version": 4
+    },
+    {
+      "id": "r_5",
+      "tool": "web_search",
+      "match": "网络",
+      "hint": {
+        "retry_backoff": 2
+      },
+      "reason": "web_search 连续 2 次网络失败, 建议重试退避",
+      "source": "failure_analysis",
+      "created_at": "2026-10-05T14:58:25+08:00",
+      "status": "active",
+      "activated_at": "2026-10-05T14:58:25+08:00",
+      "version": 5
+    },
+    {
+      "id": "r_5",
+      "tool": "web_search",
+      "match": "网络",
+      "hint": {
+        "retry_backoff": 2
+      },
+      "reason": "web_search 连续 2 次网络失败, 建议重试退避",
+      "source": "failure_analysis",
+      "created_at": "2026-10-05T14:58:25+08:00",
+      "status": "active",
+      "activated_at": "2026-10-05T14:58:25+08:00",
+      "version": 6
+    }
+  ],
+  "memories": [],
+  "prompt_patches": [],
+  "history": [
+    {
+      "version": 1,
+      "applied_at": "2026-10-04T20:28:04+08:00",
+      "rules": [
+        "r_1"
+      ]
+    },
+    {
+      "version": 2,
+      "applied_at": "2026-10-05T12:19:18+08:00",
+      "rules": [
+        "r_2"
+      ]
+    },
+    {
+      "version": 3,
+      "applied_at": "2026-10-05T12:20:37+08:00",
+      "rules": [
+        "r_3"
+      ]
+    },
+    {
+      "version": 4,
+      "applied_at": "2026-10-05T14:26:43+08:00",
+      "rules": [
+        "r_4"
+      ]
+    },
+    {
+      "version": 5,
+      "applied_at": "2026-10-05T14:58:25+08:00",
+      "rules": [
+        "r_5"
+      ]
+    },
+    {
+      "version": 6,
+      "applied_at": "2026-10-05T14:58:25+08:00",
+      "rules": [
+        "r_5"
+      ]
+    }
+  ],
+  "tests": {
+    "last_run": "2026-10-05T15:06:41+08:00",
+    "passed": true
+  }
+}
